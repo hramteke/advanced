@@ -8,11 +8,12 @@ abstract class  Computer {
 	public abstract  function getName(); 
 
 	public function setOperatingSystem($operatingSystem) {
-		$this->$operatingSystem;
+		$this->operatingSystem = $operatingSystem;
+		echo "Setted the operating system to " , $operatingSystem , "\n";
 	}
 
 	public function getOperatingSystem() {
-		return $this->$operatingSystem;
+		return $this->operatingSystem;
 	}
 }
 
@@ -135,6 +136,24 @@ class DatabaseServer extends Server {
         public function setServerName($serverName) {
                 $this->serverName = $serverName;
         }
+}
+
+class WindowPC extends PC implements OnlyWindows {
+	public function setOperatingSystem($osname) {
+		parent::setOperatingSystem($osname);
+	}
+
+	use PaymentForPC;
+}
+
+interface OnlyWindows {
+	public function setOperatingSystem($osname);
+}
+
+trait PaymentForPC {
+	public function payment() {
+		echo "You have to pay for ", $this->getName();
+	}
 }
 
 ?>
