@@ -1,5 +1,7 @@
 <?php
 
+namespace inheritance;
+
 abstract class  Computer {
 	private $operatingSystem;
 	
