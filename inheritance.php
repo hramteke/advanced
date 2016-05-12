@@ -154,6 +154,13 @@ trait PaymentForPC {
 	public function payment() {
 		echo "You have to pay for ", $this->getName();
 	}
+
+	public function priceForPC($price) {
+		$val = function() use ($price) {
+			echo "Price for this PC is " . $price . "\n";
+		};
+		$val($price);
+	}
 }
 
 ?>
